@@ -27,28 +27,14 @@ print(f"read_csv >> data.shape : {data.shape}")
 ##########
 ## data preprocessing
 ##########
+numFran = 0
+
 # data = data[data["가맹점수"] != 0]
-data = data[data["가맹점수"] > 10]
-print(f"data[data['가맹점수'] > 10 >> data.shape : {data.shape}")
+data = data[data["가맹점수"] >= numFran].sort_values("가맹점수", ascending=False)
+# print(f"data[data['가맹점수'] >= {numFran} >> data.shape : {data.shape}")
 
 data = pd.DataFrame(data["브랜드"], columns=["브랜드"])
-print(f'pd.DataFrame(data["브랜드"], columns=["브랜드"]) : {data.shape}')
-
-data.drop_duplicates(subset=None, keep='first', inplace=True, ignore_index=False)
-print(f'data.drop_duplicates >> data.shape : {data.shape}')
-
-# 개인 추가
-new_row = pd.DataFrame({"브랜드" : "개인"}, index=[0])
-print(f'new_row.shape : {new_row.shape}')
-
-data = pd.concat([new_row, data.loc[:]])
-print(f'pd.concat([new_row, data.loc[:]]) >> data.shape : {data.shape}')
-
-print(data.index)
-
-data.index = np.arange(0, len(data))
-# data.index = np.arange(1, len(data)+1)    # index 번호를 1부터 증가~
-print(data)
+# print(f'pd.DataFrame(data["브랜드"], columns=["브랜드"]) : {data.shape}')
 
 ## 브랜드명 변경 (영문, 특수문자 제거)
 import re
@@ -58,17 +44,31 @@ pattern = r'\([^)]*\)'
 for index, row in data.iterrows() :
     row[0] = re.sub(pattern=pattern, repl='', string=row[0])
 
+## 특수 브랜드명 수정
+data[data["브랜드"]=="할리스/할리스커피"] = "할리스"
+data[data["브랜드"]=="탐앤탐스커피"] = "탐앤탐스"
+data[data["브랜드"]=="꿀스커피GGUL'S COFFEE"] = "꿀스커피"
+data[data["브랜드"]=="포트캔커피 PORT CAN COFFEE"] = "포트캔커피"
+data[data["브랜드"]=="cafe65℃"] = "cafe65"
+data[data["브랜드"]=="카페안시,스튜디오안시"] = "카페안시"
+data[data["브랜드"]=="올디스커피 ALL THIS COFFEE"] = "올디스커피"
+data[data["브랜드"]=="샐러리아 SALARIA"] = "샐러리아"
 
+## 중복 제거
+data.drop_duplicates(subset=None, keep='first', inplace=True, ignore_index=False)
+# print(f'data.drop_duplicates >> data.shape : {data.shape}')
 
+## 개인 추가
+new_row = pd.DataFrame({"브랜드" : "개인"}, index=[0])
+# print(f'new_row.shape : {new_row.shape}')
 
+data = pd.concat([new_row, data.loc[:]])
+# print(f'pd.concat([new_row, data.loc[:]]) >> data.shape : {data.shape}')
 
-
-
-
-
-
-
-
+## index 변경
+data.index = np.arange(0, len(data))
+# data.index = np.arange(1, len(data)+1)    # index 번호를 1부터 증가~
+print(data)
 
 
 ##########

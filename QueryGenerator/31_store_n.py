@@ -35,9 +35,16 @@ print(f"수행시간 : {end-start} sec")
 # print(df)
 print(df.shape)
 print(df.dtypes)
+
+
 ##########
 ## data preprocessing
 ##########
+
+## 11_md_stor_t 에서 읽어온 브랜드 외 브랜드 검색
+# : 메가커피
+
+
 df = df[  (df["상세영업상태코드"] == 1)           \
         & (  df["사업장명"].str.contains("커피")  \
            | df["사업장명"].str.contains("파스쿠찌")  \
