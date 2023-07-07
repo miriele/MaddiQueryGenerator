@@ -42,7 +42,7 @@ import re
 pattern = r'\([^)]*\)'
 
 for index, row in data.iterrows() :
-    row[0] = re.sub(pattern=pattern, repl='', string=row[0])
+    row[0] = re.sub(pattern=pattern, repl='', string=row[0]).strip()
 
 ## 특수 브랜드명 수정
 data[data["브랜드"]=="할리스/할리스커피"] = "할리스"
