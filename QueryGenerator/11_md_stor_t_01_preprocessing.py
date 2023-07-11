@@ -54,6 +54,7 @@ data[data["브랜드"]=="카페안시,스튜디오안시"] = "카페안시"
 data[data["브랜드"]=="올디스커피 ALL THIS COFFEE"] = "올디스커피"
 data[data["브랜드"]=="샐러리아 SALARIA"] = "샐러리아"
 data[data["브랜드"]=="오우야 에스프레소 바"] = "오우야에스프레소바"
+data[data["브랜드"]=="+82 coffee"] = "플러스82커피"
 
 ## 중복 제거
 data.drop_duplicates(subset=None, keep='first', inplace=True, ignore_index=False)
@@ -67,7 +68,7 @@ data    = pd.concat([new_row, data.loc[:]])
 # print(f'pd.concat([new_row, data.loc[:]]) >> data.shape : {data.shape}')
 
 ## 기타 브랜드 추가
-new_row = pd.DataFrame({"브랜드" : ["메가MGC커피", "파리크라상", "파리바게뜨", "커피빈"]})
+new_row = pd.DataFrame({"브랜드" : ["파리크라상", "파리바게뜨", "커피빈", "스타벅스"]})
 data    = pd.concat([data.loc[:], new_row])
 
 ## index 변경
