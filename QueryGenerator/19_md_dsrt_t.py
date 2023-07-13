@@ -16,7 +16,7 @@ data = pd.read_csv("./19_디저트분류.txt", sep="\t", header=None)
 ##########
 ## save data to csv
 ##########
-data.to_csv("./19_md_dsrt_t.csv", sep="\t", index=True, header=False)
+data.to_csv("./19_md_dsrt_t.csv", sep="\t", index=False, header=False)
 
 
 ##########
@@ -25,7 +25,7 @@ data.to_csv("./19_md_dsrt_t.csv", sep="\t", index=True, header=False)
 len_max = 0
 
 for index, row in data.iterrows() :
-    l = len(row[0])
+    l = len(row[1])
     
     if l > len_max :
         len_max = l

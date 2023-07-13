@@ -155,7 +155,8 @@ def find_bjd_code(address):
         bjd = " ".join(addr[:3])
 
     code_list = md_bjd.loc[md_bjd["법정동"] == bjd, "코드"].tolist()
-    return code_list[0] if code_list else 0
+    # return code_list[0] if code_list else 0
+    return code_list[0] if code_list else np.nan
 
 start = time.time()
 

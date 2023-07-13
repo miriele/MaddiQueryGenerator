@@ -17,7 +17,12 @@ print(f'dessert.shape   : {dessert.shape}')
 ## concat data
 data = pd.concat([beverage, dessert], ignore_index=True)
 # print(f'data.dtypes  :\n{data.dtypes}')
-# print(data)
+print(data)
+
+## NaN 처리
+data["음료분류"].replace(np.NaN, -1, inplace=True)
+data["디저트분류"].replace(np.NaN, -1, inplace=True)
+
 
 ## convert float data type to Nullabel Interger
 data['디저트분류'] = data['디저트분류'].astype('Int16')
