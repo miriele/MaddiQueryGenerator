@@ -1,0 +1,15 @@
+kim	0
+kim	3
+park	2
+many	7
+order	10
+epl	4
+shoper	8
+shoper	4
+bes	8
+tired	7
+qnaqna	8
+racer	0
+yoon	2
+nohit	1
+nohit	4
