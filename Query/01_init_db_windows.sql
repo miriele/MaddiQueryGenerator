@@ -169,6 +169,69 @@ LINES
 	STARTING BY ''
 (menu_id, algy_t_id);
 
+LOAD DATA INFILE 'C:/Temp/35_md_stor_m.csv'
+IGNORE INTO TABLE md_stor_m
+FIELDS
+	TERMINATED BY '\t'
+LINES
+	TERMINATED BY '\n'
+	STARTING BY ''
+(stor_id, menu_id, ice_t_id, menu_t_id, stor_m_pric, stor_m_name, stor_m_cal, stor_m_info, stor_m_img);
+
+LOAD DATA INFILE 'C:/Temp/36_md_user.csv'
+IGNORE INTO TABLE md_user
+FIELDS
+	TERMINATED BY '\t'
+LINES
+	TERMINATED BY '\r\n'
+	STARTING BY ''
+(user_id, user_g_id, gen_id, user_nick, user_pass, user_name, user_bir, user_img, user_reg_ts);
+
+LOAD DATA INFILE 'C:/Temp/41_md_u_algy.csv'
+IGNORE INTO TABLE md_u_algy
+FIELDS
+	TERMINATED BY '\t'
+LINES
+	TERMINATED BY '\n'
+	STARTING BY ''
+(user_id, algy_t_id);
+
+LOAD DATA INFILE 'C:/Temp/42_md_u_drnk.csv'
+IGNORE INTO TABLE md_u_drnk
+FIELDS
+	TERMINATED BY '\t'
+LINES
+	TERMINATED BY '\n'
+	STARTING BY ''
+(user_id, drnk_t_id);
+
+LOAD DATA INFILE 'C:/Temp/43_md_u_dsrt.csv'
+IGNORE INTO TABLE md_u_dsrt
+FIELDS
+	TERMINATED BY '\t'
+LINES
+	TERMINATED BY '\n'
+	STARTING BY ''
+(user_id, dsrt_t_id);
+
+LOAD DATA INFILE 'C:/Temp/44_md_u_intr.csv'
+IGNORE INTO TABLE md_u_intr
+FIELDS
+	TERMINATED BY '\t'
+LINES
+	TERMINATED BY '\n'
+	STARTING BY ''
+(user_id, intr_t_id);
+
+LOAD DATA INFILE 'C:/Temp/45_md_u_tast.csv'
+IGNORE INTO TABLE md_u_tast
+FIELDS
+	TERMINATED BY '\t'
+LINES
+	TERMINATED BY '\n'
+	STARTING BY ''
+(user_id, tast_t_id);
+
 
 COMMIT;
 

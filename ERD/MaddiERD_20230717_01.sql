@@ -1,3 +1,5 @@
+USE BIT;
+
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Drop Tables */
@@ -31,14 +33,13 @@ DROP TABLE IF EXISTS md_user;
 DROP TABLE IF EXISTS md_gen;
 DROP TABLE IF EXISTS md_ice;
 DROP TABLE IF EXISTS md_intr_t;
-DROP TABLE IF EXISTS md_m_type;
+DROP TABLE IF EXISTS md_menu_t;
 DROP TABLE IF EXISTS md_stor_t;
 DROP TABLE IF EXISTS md_tag;
 DROP TABLE IF EXISTS md_tag_g;
 DROP TABLE IF EXISTS md_tast_t;
 DROP TABLE IF EXISTS md_user_g;
 DROP TABLE IF EXISTS md_weather;
-
 
 
 
@@ -138,7 +139,7 @@ CREATE TABLE md_c_like
 CREATE TABLE md_drnk_t
 (
 	drnk_t_id smallint NOT NULL COMMENT '음료분류ID',
-	drnk_t_name varbinary(30) NOT NULL COMMENT '음료분류명',
+	drnk_t_name varchar(30) NOT NULL COMMENT '음료분류명',
 	PRIMARY KEY (drnk_t_id)
 ) COMMENT = '음료분류';
 
@@ -147,7 +148,7 @@ CREATE TABLE md_drnk_t
 CREATE TABLE md_dsrt_t
 (
 	dsrt_t_id smallint NOT NULL COMMENT '디저트분류ID',
-	dsrt_t_name varbinary(20) NOT NULL COMMENT '디저트분류명',
+	dsrt_t_name varchar(20) NOT NULL COMMENT '디저트분류명',
 	PRIMARY KEY (dsrt_t_id)
 ) COMMENT = '디저트분류';
 
@@ -197,11 +198,22 @@ CREATE TABLE md_menu
 	dsrt_t_id smallint COMMENT '디저트분류ID',
 	drnk_t_id smallint COMMENT '음료분류ID',
 	menu_name varchar(60) NOT NULL COMMENT '메뉴명',
-	menu_cal tinyint NOT NULL COMMENT '칼로리',
+	menu_cal smallint NOT NULL COMMENT '칼로리',
 	menu_info varchar(300) NOT NULL COMMENT '메뉴소개',
-	menu_img varchar(30) COMMENT '메뉴이미지',
+	menu_img varchar(100) COMMENT '메뉴이미지',
 	PRIMARY KEY (menu_id)
 ) COMMENT = '메뉴';
+
+
+-- 메뉴타입 : 1 : 일반
+-- 2 : 시그니처
+CREATE TABLE md_menu_t
+(
+	menu_t_id tinyint NOT NULL COMMENT '메뉴타입ID',
+	menu_t_name varchar(15) NOT NULL COMMENT '메뉴타입명',
+	PRIMARY KEY (menu_t_id)
+) COMMENT = '메뉴타입 : 1 : 일반
+2 : 시그니처';
 
 
 -- 메뉴알러지
@@ -212,17 +224,6 @@ CREATE TABLE md_m_algy
 	algy_t_id smallint NOT NULL COMMENT '알러지분류ID',
 	PRIMARY KEY (m_algy_id)
 ) COMMENT = '메뉴알러지';
-
-
--- 메뉴타입 : 1 : 일반
--- 2 : 시그니처
-CREATE TABLE md_m_type
-(
-	m_type_id tinyint NOT NULL COMMENT '메뉴타입ID',
-	m_type_n varchar(15) NOT NULL COMMENT 'm_type_n',
-	PRIMARY KEY (m_type_id)
-) COMMENT = '메뉴타입 : 1 : 일반
-2 : 시그니처';
 
 
 -- 주문
@@ -280,11 +281,11 @@ CREATE TABLE md_stor
 	user_id varchar(20) COMMENT '회원ID',
 	bjd_code numeric(10) NOT NULL COMMENT '법정동코드',
 	area_t_id tinyint NOT NULL COMMENT '면적분류ID',
-	stor_img varchar(150) NOT NULL COMMENT '이미지',
+	stor_img varchar(100) NOT NULL COMMENT '이미지',
 	stor_name varchar(50) NOT NULL COMMENT '매장명',
 	stor_addr varchar(200) NOT NULL COMMENT '매장주소',
-	stor_lati numeric(18,15) COMMENT '위치-위도',
-	stor_long numeric(18,15) COMMENT '위치-경도',
+	stor_lati numeric(19,15) DEFAULT 0.0 COMMENT '위치-위도',
+	stor_long numeric(19,15) DEFAULT 0.0 COMMENT '위치-경도',
 	stor_tel varchar(20) COMMENT '전화번호',
 	stor_num varchar(20) COMMENT '사업자등록번호',
 	PRIMARY KEY (stor_id)
@@ -294,16 +295,16 @@ CREATE TABLE md_stor
 -- 매장메뉴
 CREATE TABLE md_stor_m
 (
-	stor_m_id int NOT NULL COMMENT '매장메뉴ID',
+	stor_m_id int NOT NULL AUTO_INCREMENT COMMENT '매장메뉴ID',
 	stor_id int NOT NULL COMMENT '매장ID',
 	menu_id int NOT NULL COMMENT '메뉴ID',
 	ice_t_id tinyint NOT NULL COMMENT '아이스분류ID',
-	m_type_id tinyint NOT NULL COMMENT '메뉴타입ID',
+	menu_t_id tinyint NOT NULL COMMENT '메뉴타입ID',
 	stor_m_pric smallint NOT NULL COMMENT '가격',
 	stor_m_name varchar(60) NOT NULL COMMENT '매장메뉴명',
-	stor_m_cal tinyint NOT NULL COMMENT '매장메뉴칼로리',
-	stor_m_ifno varchar(600) NOT NULL COMMENT '매장메뉴소개',
-	stor_m_img varchar(30) NOT NULL COMMENT '매장메뉴이미지',
+	stor_m_cal smallint NOT NULL COMMENT '매장메뉴칼로리',
+	stor_m_info varchar(600) NOT NULL COMMENT '매장메뉴소개',
+	stor_m_img varchar(100) NOT NULL COMMENT '매장메뉴이미지',
 	PRIMARY KEY (stor_m_id)
 ) COMMENT = '매장메뉴';
 
@@ -591,8 +592,8 @@ ALTER TABLE md_stor_m
 
 
 ALTER TABLE md_stor_m
-	ADD FOREIGN KEY (m_type_id)
-	REFERENCES md_m_type (m_type_id)
+	ADD FOREIGN KEY (menu_t_id)
+	REFERENCES md_menu_t (menu_t_id)
 	ON UPDATE RESTRICT
 	ON DELETE RESTRICT
 ;
