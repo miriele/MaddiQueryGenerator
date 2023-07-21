@@ -1,4 +1,5 @@
 USE mysql;
+USE BIT;
 SELECT USER, HOST FROM user;
 SELECT * FROM USER;
 SHOW VARIABLES LIKE '%dir';
@@ -72,10 +73,8 @@ DELETE FROM md_u_intr;
 DELETE FROM md_u_tast;
 DELETE FROM md_user;
 
-
-
 SHOW GRANTS FOR CURRENT_USER;
 SHOW GRANTS FOR 'bit'@'%';
 SHOW GRANTS FOR 'root'@'%';
 
-SELECT USER, HOST, 
+DESC board_imageboard;

@@ -1,4 +1,4 @@
-USE BIT;
+USE bit;
 
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
@@ -40,6 +40,7 @@ DROP TABLE IF EXISTS md_tag_g;
 DROP TABLE IF EXISTS md_tast_t;
 DROP TABLE IF EXISTS md_user_g;
 DROP TABLE IF EXISTS md_weather;
+
 
 
 
@@ -96,7 +97,7 @@ CREATE TABLE md_comb
 	comb_tit varchar(90) NOT NULL COMMENT '제목',
 	comb_nop tinyint NOT NULL COMMENT '인원수',
 	comb_cont text NOT NULL COMMENT '조합내용',
-	comb_img varchar(30) COMMENT '이미지경로',
+	comb_img varchar(100) COMMENT '이미지경로',
 	comb_reg_ts timestamp NOT NULL COMMENT '작성일시',
 	PRIMARY KEY (comb_id)
 ) COMMENT = '추천조합';
@@ -258,7 +259,7 @@ CREATE TABLE md_review
 	rev_star numeric(2,1) NOT NULL COMMENT '리뷰별점',
 	rev_ts timestamp NOT NULL COMMENT '작성일시',
 	rev_cont varchar(300) COMMENT '리뷰내용',
-	rev_img varchar(30) COMMENT '이미지경로',
+	rev_img varchar(100) COMMENT '이미지경로',
 	PRIMARY KEY (rev_id)
 ) COMMENT = '리뷰';
 
@@ -316,7 +317,7 @@ CREATE TABLE md_stor_reg
 	user_id varchar(20) NOT NULL COMMENT '회원ID',
 	stor_id int NOT NULL COMMENT '매장ID',
 	reg_num varchar(40) NOT NULL COMMENT '사업자등록번호',
-	reg_img varchar(50) NOT NULL COMMENT '사업자등록증경로',
+	reg_img varchar(100) NOT NULL COMMENT '사업자등록증경로',
 	reg_sub_ts timestamp NOT NULL COMMENT '신청일시',
 	reg_con_ts timestamp COMMENT '승일일시',
 	PRIMARY KEY (reg_id)
@@ -376,7 +377,7 @@ CREATE TABLE md_user
 	user_pass varchar(20) NOT NULL COMMENT '비밀번호',
 	user_name varchar(30) NOT NULL COMMENT '회원이름',
 	user_bir date NOT NULL COMMENT '생년월일',
-	user_img varchar(50) NOT NULL COMMENT '이미지',
+	user_img varchar(100) NOT NULL COMMENT '이미지',
 	user_reg_ts timestamp NOT NULL COMMENT '가입일시',
 	user_ext_ts timestamp COMMENT '탈퇴일시',
 	PRIMARY KEY (user_id),
