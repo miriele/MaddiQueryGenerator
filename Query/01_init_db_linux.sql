@@ -4,7 +4,7 @@ SET GLOBAL local_infile=1;
 SET bulk_insert_buffer_size=536870912;
 SET autocommit=0;
 SET unique_checks=0;
-SET foreign_key_checks=0;
+-- SET foreign_key_checks=0;
 
 
 LOAD DATA INFILE '/home/bit/md_ddl/11_md_stor_t_01_pre_modify.csv'
@@ -183,7 +183,7 @@ IGNORE INTO TABLE md_user
 FIELDS
 	TERMINATED BY '\t'
 LINES
-	TERMINATED BY '\r\n'
+	TERMINATED BY '\n'
 	STARTING BY ''
 (user_id, user_g_id, gen_id, user_nick, user_pass, user_name, user_bir, user_img, user_reg_ts);
 
@@ -234,10 +234,17 @@ LINES
 (user_id, tast_t_id);
 
 
+-- insert into md_buck (user_id, stor_m_id, buck_num, buck_reg_ts) values ('abc001', 280, 2, now());
+-- insert into md_buck (user_id, stor_m_id, buck_num, buck_reg_ts) values ('abc001', 305, 3, now());
+-- insert into md_buck (user_id, stor_m_id, buck_num, buck_reg_ts) values ('abc001', 37957, 1, now());
+-- insert into md_buck (user_id, stor_m_id, buck_num, buck_reg_ts) values ('abc001', 37967, 2, now());
+
 COMMIT;
 
 SET bulk_insert_buffer_size=8388608;
 SET autocommit=1;
 SET unique_checks=1;
-SET foreign_key_checks=1;
+-- SET foreign_key_checks=1;
 SET GLOBAL local_infile=0;
+
+

@@ -69,8 +69,8 @@ start = time.time()
 data_list = []
 
 for index, row in data_stor.iterrows():
-    print(index, row[0])
-    stor_id = index
+    # print(index, row[0])
+    stor_id = index+1       # store_id 는 1부터 시작한다 : mysql auto increment 적용되어있음.
     stor_t_id = row[0]
 
     if stor_t_id == 2:
@@ -85,6 +85,9 @@ for index, row in data_stor.iterrows():
         data_temp = data_bag.copy()
     else:
         data_temp = data_etc.copy()
+        
+    # if stor_id == 0 :
+    #     print(f'stor_id : {stor_id}\tstor_t_id : {stor_t_id}')
 
     data_temp.insert(0, "stor_id", stor_id)
     data_list.append(data_temp)

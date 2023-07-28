@@ -4,7 +4,7 @@ SET GLOBAL local_infile=1;
 SET bulk_insert_buffer_size=536870912;
 SET autocommit=0;
 SET unique_checks=0;
-SET foreign_key_checks=0;
+-- SET foreign_key_checks=0;
 
 
 LOAD DATA INFILE 'C:/Temp/11_md_stor_t_01_pre_modify.csv'
@@ -238,5 +238,5 @@ COMMIT;
 SET bulk_insert_buffer_size=8388608;
 SET autocommit=1;
 SET unique_checks=1;
-SET foreign_key_checks=1;
+-- SET foreign_key_checks=1;
 SET GLOBAL local_infile=0;
