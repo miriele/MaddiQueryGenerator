@@ -38,7 +38,7 @@ id	name	img
 0	적당	0_goeck_gae.jpg
 0	카페고메	0_gome_gae.jpg
 0	공들인	0_gong_gae.jpg
-0	GOONIES		0_goo_gae.jpg
+0	GOONIES	0_goo_gae.jpg
 0	구황작물	0_guhwang_gae.jpg
 0	결	0_gyuel_gae.jpg
 0	하인나커피	0_hainna_gae.jpg
@@ -64,10 +64,10 @@ id	name	img
 0	오아트	0_oaat_gae.jpg
 0	카페Oct.25	0_oct_gae.jpg
 0	오퍼 카페	0_offer_gae.jpg
-0	오잇	0_oit_gae
-0	옥별정	0_okbyul_gae
-0	오늘도행복해	0_oneul_gae
-0	온실속화실	0_onsil_gae
+0	오잇	0_oit_gae.jpg
+0	옥별정	0_okbyul_gae.jpg
+0	오늘도행복해	0_oneul_gae.jpg
+0	온실속화실	0_onsil_gae.jpg
 0	파크15	0_parc_gae.jpg
 0	패스드	0_passed_gae.jpg
 0	PHYPSHOME	0_phyps_gae.jpg

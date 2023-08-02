@@ -4,7 +4,7 @@ SET GLOBAL local_infile=1;
 SET bulk_insert_buffer_size=536870912;
 SET autocommit=0;
 SET unique_checks=0;
--- SET foreign_key_checks=0;
+SET foreign_key_checks=0;
 
 
 LOAD DATA INFILE '/home/bit/md_ddl/11_md_stor_t_01_pre_modify.csv'
@@ -149,7 +149,7 @@ FIELDS
 LINES
 	TERMINATED BY '\n'
 	STARTING BY ''
-(stor_t_id, @dumy, bjd_code, area_t_id, stor_img, stor_name, stor_addr, @stor_lati, @stor_long, stor_tel, stor_num);
+(stor_t_id, @dumy, bjd_code, area_t_id, stor_img, stor_name, stor_addr, stor_lati, stor_long, stor_tel, stor_num);
 
 LOAD DATA INFILE '/home/bit/md_ddl/33_md_menu.csv'
 IGNORE INTO TABLE md_menu
@@ -244,7 +244,7 @@ COMMIT;
 SET bulk_insert_buffer_size=8388608;
 SET autocommit=1;
 SET unique_checks=1;
--- SET foreign_key_checks=1;
+SET foreign_key_checks=1;
 SET GLOBAL local_infile=0;
 
 

@@ -124,10 +124,7 @@ df.index = np.arange(0, len(df))
 from pyproj import Transformer
 
 transformer = Transformer.from_crs("EPSG:2097", "EPSG:4326")
-converted   = transformer.transform(df['좌표정보(x)'].values, df['좌표정보(y)'].values)
-# transformer = Transformer.from_crs("EPSG:2097", "EPSG:4326")
-# coordinates = np.column_stack((df['좌표정보(x)'].values, df['좌표정보(y)'].values))
-# converted   = transformer.transform(coordinates[:, 0], coordinates[:, 1])
+converted   = transformer.transform(df['좌표정보(y)'].astype(float).values, df['좌표정보(x)'].astype(float).values)
 
 df['좌표정보(x)'] = converted[0]
 df['좌표정보(y)'] = converted[1]

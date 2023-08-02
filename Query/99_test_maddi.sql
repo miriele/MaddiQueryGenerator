@@ -41,9 +41,6 @@ where  u.user_g_id = ug.user_g_id
 	and u.user_id = 'abc002';
 
 
-select * from md_stor;
-
-
 select * from md_c_like;
 select count(*) from md_c_like where comb_id=2;
 
@@ -82,6 +79,37 @@ select * from md_stor_m;
 delete from md_user;
 select * from md_user;
 select * from md_u_algy;
+
+
+select * from md_stor;
+select count(*) from md_stor where stor_img not like '%.jpg';
+select * from md_stor where stor_img not like '%.jpg';
+
+select distinct stor_id
+from md_stor_m sm, md_menu m
+where  sm.menu_id = m.menu_id
+	and m.menu_name = '아메리카노';
+
+select s.stor_id, s.stor_name, s.stor_img, a.area_t_name, b.bjd_name
+from md_stor s, md_bjd b, md_area_t a
+where  s.bjd_code = b.bjd_code
+	and s.area_t_id = a.area_t_id
+	and b.bjd_name = '서울특별시 서초구 서초동';
+
+-- select s.stor_id, s.stor_name, s.stor_img, a.area_t_name, b.bjd_name
+select *
+from md_stor s, md_bjd b, md_area_t a
+where  s.bjd_code = b.bjd_code
+	and s.area_t_id = a.area_t_id
+--	and 37.4942405717987 < s.stor_lati
+--	and s.stor_lati < 37.49604676988036
+--	and 127.02722140819515 < s.stor_long
+--	and s.stor_long < 127.02857906765026
+--	and 35.4942405717987 < s.stor_lati
+	and s.stor_lati < 38.49604676988036
+--	and 125.02722140819515 < s.stor_long
+	and s.stor_long < 128.02857906765026
+	and b.bjd_name = '서울특별시 서초구 서초동';
 
 select * from md_stor
 where bjd_code=1165010800
@@ -410,9 +438,11 @@ select count(*) from md_stor where stor_addr like '세종%'; -- 326
 select * from md_drnk_t;
 select * from md_dsrt_t;
 
+select * from md_stor_reg;
+delete from md_stor_reg;
 
-
-
+select * from md_ordr where user_id='abc001';
+select * from md_review where ordr_id=1;
 
 
 
