@@ -232,6 +232,24 @@ LINES
 	STARTING BY ''
 (user_id, tast_t_id);
 
+LOAD DATA INFILE 'C:/Temp/51_md_hjd.csv'
+IGNORE INTO TABLE md_hjd
+FIELDS
+	TERMINATED BY '\t'
+LINES
+	TERMINATED BY '\r\n'
+	STARTING BY ''
+(hjd_code, hjd_name, hjd_x, hjd_y);
+
+LOAD DATA INFILE 'C:/Temp/52_md_bh.csv'
+IGNORE INTO TABLE md_bh
+FIELDS
+	TERMINATED BY '\t'
+LINES
+	TERMINATED BY '\r\n'
+	STARTING BY ''
+(bjd_code, hjd_code);
+
 
 COMMIT;
 

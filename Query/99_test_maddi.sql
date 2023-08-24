@@ -29,6 +29,7 @@ delete from md_u_tast;
 SET foreign_key_checks=1;
 
 
+select * from md_user;
 select * from md_user where user_id='m001';
 
 select user_id, user_name, user_g_name, user_reg_ts
@@ -62,7 +63,7 @@ select * from md_bjd where bjd_name = '서울특별시 서초구 방배동';
 select bjd_code from md_bjd where bjd_name = '서울특별시 서초구 방배동';
 
 
-select * from md_stor_m where stor_id=1;
+select * from md_stor_m where stor_id=4231;
 select count(*) from md_stor_m where stor_id=0;
 
 select stor_m_name from md_stor_m
@@ -82,6 +83,8 @@ select * from md_u_algy;
 
 
 select * from md_stor;
+select * from md_stor where stor_id=4231;
+
 select count(*) from md_stor where stor_img not like '%.jpg';
 select * from md_stor where stor_img not like '%.jpg';
 
@@ -96,20 +99,28 @@ where  s.bjd_code = b.bjd_code
 	and s.area_t_id = a.area_t_id
 	and b.bjd_name = '서울특별시 서초구 서초동';
 
+select * from md_stor;
+select * from md_stor where stor_lati=0.0;
+
+desc md_stomd_stormd_stormd_stormd_storr;
+
 -- select s.stor_id, s.stor_name, s.stor_img, a.area_t_name, b.bjd_name
 select *
 from md_stor s, md_bjd b, md_area_t a
 where  s.bjd_code = b.bjd_code
 	and s.area_t_id = a.area_t_id
---	and 37.4942405717987 < s.stor_lati
---	and s.stor_lati < 37.49604676988036
+	and 37.4942405717987 < s.stor_lati
+	and s.stor_lati < 37.49604676988036
 --	and 127.02722140819515 < s.stor_long
 --	and s.stor_long < 127.02857906765026
 --	and 35.4942405717987 < s.stor_lati
-	and s.stor_lati < 38.49604676988036
+--	and s.stor_lati < 38.49604676988036
 --	and 125.02722140819515 < s.stor_long
-	and s.stor_long < 128.02857906765026
+--	and s.stor_long < 128.02857906765026
 	and b.bjd_name = '서울특별시 서초구 서초동';
+
+select * from md_bjd b;
+where b.bjd_name = '서울특별시 서초구 서초동';
 
 select * from md_stor
 where bjd_code=1165010800
@@ -214,11 +225,13 @@ insert into md_buck (user_id, stor_m_id, buck_num, buck_reg_ts) values ('abc001'
 insert into md_buck (user_id, stor_m_id, buck_num, buck_reg_ts) values ('abc001', 37967, 2, now());
 commit;
 
+select * from md_weather;
+
 select * from md_ordr;
 
 
 select * from md_review;
-select * from md_ordr where ordr_id=1;
+select * from md_ordr where ordr_id=94;
 select * from md_ordr_m where ordr_id=1;
 select * from md_stor_m where stor_m_id=15;
 select * from md_stor where stor_id=1;
@@ -444,15 +457,60 @@ delete from md_stor_reg;
 select * from md_ordr where user_id='abc001';
 select * from md_review where ordr_id=1;
 
+delete from md_hjd;
+delete from md_bh;
+
+select * from md_hjd;
+select * from md_bjd;
+select * from md_bh;
+
+alter table md_bh auto_increment = 1;
+
+select *
+from md_bjd b
+left join md_bh bh
+on b.bjd_code = bh.bjd_code;
+where b.bjd_code is null;
+
+select *
+from md_bh bh
+right join md_bjd b
+on bh.bjd_code = b.bjd_code;
+where b.bjd_code is null;
+
+select *
+from md_bh bh
+right join md_hjd h
+on bh.hjd_code = h.hjd_code;
+
+select *
+from md_bjd b
+left join md_bh bh
+on b.bjd_code = bh.bjd_code
+left join md_hjd h
+on bh.hjd_code = h.hjd_code
+where bh.bjd_code is null
+	or bh.hjd_code is null
+	or h.hjd_name is null
+	or b.bjd_name is null;
+
+select *
+from md_bjd b
+left join md_bh bh
+on b.bjd_code = bh.bjd_code
+left join md_hjd h
+on bh.hjd_code = h.hjd_code
+where bh.bjd_code = 1174010300;
+
+select *
+from md_bjd b, md_bh bh, md_hjd h
+where  b.bjd_code = bh.bjd_code
+	and bh.hjd_code = h.hjd_code
+	and b.bjd_code = 2671025900;
+
+select * from md_click;
+delete from md_click;
 
 
 
-
-
-
-
-
-
-
-
-
+select * from md_click;

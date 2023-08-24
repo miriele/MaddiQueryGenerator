@@ -1,0 +1,15 @@
+abc001	0
+abc001	3
+abc023	2
+abc051	7
+abc068	10
+abc077	4
+abc088	8
+abc091	4
+abc099	8
+abc101	7
+abc105	8
+abc111	0
+abc136	2
+abc140	1
+abc140	4

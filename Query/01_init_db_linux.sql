@@ -233,6 +233,86 @@ LINES
 	STARTING BY ''
 (user_id, tast_t_id);
 
+LOAD DATA INFILE '/home/bit/md_ddl/51_md_hjd.csv'
+IGNORE INTO TABLE md_hjd
+FIELDS
+	TERMINATED BY '\t'
+LINES
+	TERMINATED BY '\n'
+	STARTING BY ''
+(hjd_code, hjd_name, hjd_x, hjd_y);
+
+LOAD DATA INFILE '/home/bit/md_ddl/52_md_bh.csv'
+IGNORE INTO TABLE md_bh
+FIELDS
+	TERMINATED BY '\t'
+LINES
+	TERMINATED BY '\n'
+	STARTING BY ''
+(bjd_code, hjd_code);
+
+LOAD DATA INFILE '/home/bit/md_ddl/61_md_click.csv'
+IGNORE INTO TABLE md_click
+FIELDS
+	TERMINATED BY '\t'
+LINES
+	TERMINATED BY '\n'
+	STARTING BY ''
+(stor_m_id, user_id, click_ts);
+
+LOAD DATA INFILE '/home/bit/md_ddl/61_md_srch.csv'
+IGNORE INTO TABLE md_srch
+FIELDS
+	TERMINATED BY '\t'
+LINES
+	TERMINATED BY '\n'
+	STARTING BY ''
+(user_id, bjd_code, srch_word, srch_ts);
+
+LOAD DATA INFILE '/home/bit/md_ddl/62_md_buck.csv'
+IGNORE INTO TABLE md_buck
+FIELDS
+	TERMINATED BY '\t'
+LINES
+	TERMINATED BY '\n'
+	STARTING BY ''
+(user_id, stor_m_id, buck_num, buck_reg_ts, @buck_del_ts, buck_ord_ts);
+
+LOAD DATA INFILE '/home/bit/md_ddl/63_md_ordr.csv'
+IGNORE INTO TABLE md_ordr
+FIELDS
+	TERMINATED BY '\t'
+LINES
+	TERMINATED BY '\n'
+	STARTING BY ''
+(user_id, weather_id, ordr_temp, ordr_ord_ts, ordr_com_ts);
+
+LOAD DATA INFILE '/home/bit/md_ddl/63_md_ordr_m.csv'
+IGNORE INTO TABLE md_ordr_m
+FIELDS
+	TERMINATED BY '\t'
+LINES
+	TERMINATED BY '\n'
+	STARTING BY ''
+(ordr_id, stor_m_id, ordr_num);
+
+LOAD DATA INFILE '/home/bit/md_ddl/64_md_review.csv'
+IGNORE INTO TABLE md_review
+FIELDS
+	TERMINATED BY '\t'
+LINES
+	TERMINATED BY '\n'
+	STARTING BY ''
+(ordr_id, rev_star, rev_ts, @rev_cont, @rev_img);
+
+LOAD DATA INFILE '/home/bit/md_ddl/65_md_recommend.csv'
+IGNORE INTO TABLE md_recommend
+FIELDS
+	TERMINATED BY '\t'
+LINES
+	TERMINATED BY '\n'
+	STARTING BY ''
+(user_id, menu_id);
 
 -- insert into md_buck (user_id, stor_m_id, buck_num, buck_reg_ts) values ('abc001', 280, 2, now());
 -- insert into md_buck (user_id, stor_m_id, buck_num, buck_reg_ts) values ('abc001', 305, 3, now());
