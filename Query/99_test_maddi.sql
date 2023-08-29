@@ -509,8 +509,16 @@ where  b.bjd_code = bh.bjd_code
 	and b.bjd_code = 2671025900;
 
 select * from md_click;
+select * from md_srch;
+select * from md_buck;
+select * from md_ordr;
+select * from md_ordr_m;
+select * from md_review;
+select * from md_recommend;
+
 delete from md_click;
+delete from md_review;
 
 
 
-select * from md_click;
+

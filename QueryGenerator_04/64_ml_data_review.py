@@ -102,7 +102,7 @@ for i in dsrt_mid :
     dsrt_rev.append(items)
 
 dsrt_r = pd.DataFrame(dsrt_rev)
-rev_data = pd.concat([drnk_r, dsrt_r], ignore_index=True)    
+rev_data = pd.concat([drnk_r, dsrt_r], ignore_index=True)
 
 #########
 # save data to csv
